@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+<ion-button fill=clear slot="end" (click)=presentActionSheet()>
+  <ion-icon style="color: aliceblue; font-size: 25px;"
+    name="menu">
+  </ion-icon>
+</ion-button>
+
+
+    <ion-title>
+      Salas de chat
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor = 'let sala of chats' (click)="openChat(sala)">
+       <ion-avatar slot="start">
+           <ion-img [src]="sala.img"></ion-img>
+          <!-- <ion-img src="https://picsum.photos/id/1/200/300"></ion-img> -->
+       </ion-avatar>
+       <ion-label>
+         <h2>
+           <b>{{sala.name}}</b>
+         </h2>
+         <h3>{{sala.description}}</h3>
+       </ion-label>
+
+
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

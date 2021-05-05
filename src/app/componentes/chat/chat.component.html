@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-button slot="end" fill="clear" (click)="cerrarChat()">
+      <ion-icon
+        name="arrow-back"
+        style="font-size: 25px; color: aliceblue;"
+      ></ion-icon>
+    </ion-button>
+    <ion-title>
+      {{chat.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding #scrollElement>
+  <div *ngIf="room">
+    <ion-card *ngFor="let m of room.Messages let last = last">
+      <ion-card-subtitle>
+       {{m.type}}  -  {{fecha(m.date)}}
+      </ion-card-subtitle>
+      <ion-card-content>
+        {{m.content}}
+      </ion-card-content>
+      {{last ? irAlFinal() : ''}}
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer padding>
+  <ion-item>
+    <ion-textarea [(ngModel)]="msg" #area> </ion-textarea>
+    <ion-button color="success" (click)="sendMessage()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>
